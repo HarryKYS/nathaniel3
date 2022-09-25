@@ -7,7 +7,7 @@ pyautogui.sleep(1)
 con = pyautogui.confirm('계속 진행하시겠습니까?', buttons=['OK', 'Cancel'])
 
 if con == 'OK':
-    my_write = [1,2]
+    my_write = [1,2,3]
     for invoice in my_write:
         pyperclip.copy(invoice)
         pyautogui.click(2199, 345, button="left")
