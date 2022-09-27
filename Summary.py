@@ -9,6 +9,7 @@ import time
 options = Options()
 # browser = webdriver.Chrome("/Users/harry/Desktop/OneMinPython/Python & Ruby/chromedriver")
 browser = webdriver.Chrome("./chromedriver")
+browser.maximize_window()
 browser.get("https://mos.coupang.com/login")
 time.sleep(1)
 # browser.maximize_window()
