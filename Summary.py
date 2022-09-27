@@ -12,7 +12,7 @@ browser = webdriver.Chrome("./chromedriver")
 browser.maximize_window()
 browser.get("https://mos.coupang.com/login")
 time.sleep(1)
-# browser.maximize_window()
+
 options.add_argument('--kiosk')
 options.add_argument('--start-fullscreen')
 time.sleep(1)
