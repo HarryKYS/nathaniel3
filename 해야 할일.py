@@ -2,16 +2,11 @@
 # ㄴ 해결 후 답 적기 
 # 2.mac 창 tex sizs 작게 하는거 확인해보기 
 
-from selenium import webdriver
-import time
 
+# https://ohmyz.sh/
 
+# https://iterm2colorschemes.com/
 
-browser = webdriver.Chrome("./chromedriver")
-browser.set_window_size(1000, 1500)
-browser.get("http://naver.com")
+# https://github.com/jaybk051183/powerlevel-10k
 
- 
-
-if __name__ == '__main__':
-    main()
+# https://github.com/romkatv/powerlevel10k/blob/master/font.md
