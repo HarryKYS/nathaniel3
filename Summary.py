@@ -44,7 +44,12 @@ ctime = datetime.datetime.now()
 # ftime = datetime.timedelta(days=1)
 # ntime = ctime - ftime
 # # browser.find_element(By.XPATH, "//td[text()='26']").click()
-browser.find_element(By.XPATH, "//td[text()='{}']".format(ctime.strftime("%d"))).click()
+browser.find_element(By.XPATH, "//td[text()='{}'][not(contains(@class,'old day'))]".format(ctime.strftime("%d"))).click()
+# browser.find_element(By.XPATH, "/html/body/div[3]/div[1]/table/tbody/[td/@class='today active day']/td[text()='{}']".format(ctime.strftime("%d"))).click()
+
+# browser.find_element(By.XPATH, "//td[@class='today active day']").click()  # today day 
+
+# browser.find_element(By.XPATH, "//td[@class='today day']").click()
 # time.sleep(2)
 # 캠프칸 클릭
 browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[2]/div[1]/div/button').click()
