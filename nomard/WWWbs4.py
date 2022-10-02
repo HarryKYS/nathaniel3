@@ -29,6 +29,7 @@ else:
             # print(company.string, kind.string, region.string, title.string)
             # print("---------------------")
             job_date = {
+                'link' : f"https://weworkremotely.com/{link}",
                 'company' : company.string,
                 'kind' : kind.string,
                 'region' : region.string,
