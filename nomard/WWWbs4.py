@@ -30,9 +30,9 @@ else:
             # print("---------------------")
             job_date = {
                 'link' : f"https://weworkremotely.com/{link}",
-                'company' : company.string,
-                'kind' : kind.string,
-                'region' : region.string,
+                'company' : company.string.replace(",", " "),
+                'kind' : kind.string.replace(",", " "),
+                'region' : region.string.replace(",", " ")
             }
             results.append(job_date)
         for result in results:

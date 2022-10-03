@@ -20,7 +20,7 @@ def get_page_count():
     else:
         return count
 print(get_page_count())
-def extact_indeed_jobs():
+def extract_indeed_jobs():
 # options = Options()
 # options.add_argument("--no-sandbox")
 # options.add_argument("--disable-dev=shm-usage")
@@ -48,14 +48,14 @@ def extact_indeed_jobs():
                 location = job.find("div", class_="companyLocation")
                 job_date = {
                             'link' : f"https://kr.indeed.com{link}",
-                            'company' : company.string,
-                            'location' : location.string,
-                            'position' : title
+                            'company' : company.string.replace(",", " "),
+                            'location' : location.string.replace(",", " "),
+                            'position' : title.replace(",", " ")
                         }
                 results.append(job_date)
     return results
 
-jobs = extact_indeed_jobs()
+jobs = extract_indeed_jobs()
 print(len(jobs))
         # if response.status_code != 200:
         #     print("Can't request website")
