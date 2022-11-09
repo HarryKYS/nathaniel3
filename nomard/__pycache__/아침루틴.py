@@ -1,5 +1,4 @@
 from datetime import datetime
-from pickle import TRUE
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 # from selenium.webdriver.common.keys import Keys
@@ -26,7 +25,7 @@ time.sleep(2)
 pyautogui.write("dufrhd3304!@")
 pyautogui.press("enter")
 time.sleep(2)
-# KPIs 클릭
+# KPIs 클릭 
 browser.find_element(By.XPATH, '//*[@id="m_ver_menu"]/ul/li[2]/a').click()
 time.sleep(0.5)
     # browser.switch_to.frame('iframeResult')
@@ -45,7 +44,13 @@ time.sleep(0.5)
 ctime = datetime.datetime.now()
 ftime = datetime.timedelta(days=1)
 ntime = ctime - ftime
-if ntime.strftime("%d") == "1":
+# if ctime.strftime("%-d") == "1":
+#     browser.find_element(By.XPATH, "//td[text()='{}']".format(ntime.strftime("%-d"))).click()
+# elif ntime.strftime("%-d") == "1":
+#     browser.find_element(By.XPATH, "//td[text()='{}']".format(ntime.strftime("%-d"))).click()
+# else:
+#     browser.find_element(By.XPATH, "//td[text()='{}'][not(contains(@class,'old day'))]".format(ctime.strftime("%-d"))).click()
+if ctime.strftime("%-d") == "1":
     browser.find_element(By.XPATH, "//td[text()='{}']".format(ntime.strftime("%-d"))).click()
 else:
     browser.find_element(By.XPATH, "//td[text()='{}'][not(contains(@class,'old day'))]".format(ntime.strftime("%-d"))).click()
@@ -57,12 +62,12 @@ else:
 
 # browser.find_element(By.XPATH, "//td[@class='today day']").click()
 # time.sleep(2)
-
+time.sleep(1)
 # pacel칸 클릭
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div[1]/div/div[2]/div/div/button/div').click()
-time.sleep(0.5)
+browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div[1]/div/div[2]/div/div[1]/button/div').click()
+time.sleep(1)
 # pacel 클릭
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div[1]/div/div[2]/div/div/div/div/ul/li[1]/a/span[2]').click()
+browser.find_element(By.LINK_TEXT, 'PARCEL').click()
 time.sleep(0.5)
 # #셀렉트 칸 클릭
 # browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div[1]/div/div[3]/div/div/button').click()
@@ -75,7 +80,8 @@ time.sleep(0.5)
 browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div[1]/div/div[4]/div[1]/div/button').click()
 time.sleep(0.5)
 # 구리2 클릭
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div[1]/div/div[4]/div[1]/div/div/div[3]/ul/li[72]/a').click()
+
+browser.find_element(By.LINK_TEXT, 'GUR_2(SG21)').click()
 time.sleep(0.5)
 # 쉬핑타입 클릭
 browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div[1]/div/div[5]/div/div[1]/button/div/div').click()
@@ -221,7 +227,7 @@ time.sleep(0.5)
 browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[2]/div[1]/div/div/div[1]/div/button[2]').click()
 time.sleep(0.5)
 # 구리2 클릭
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[2]/div[1]/div/div/div[2]/ul/li[40]/a').click()
+browser.find_element(By.LINK_TEXT, '구리2 (GUR_2)').click()
 time.sleep(0.5)
 # 서치바 클릭
 browser.find_element(By.XPATH, '//*[@id="search"]').click()
@@ -277,7 +283,7 @@ browser.find_element(By.XPATH, "//td[text()='{}'][not(contains(@class,'old day')
 browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div[1]/div/div[2]/div/div/button').click()
 time.sleep(0.5)
 # 구리2 클릭
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div[1]/div/div[2]/div/div/div[1]/div/ul/li[74]/a').click()
+browser.find_element(By.LINK_TEXT, 'GUR_2').click()
 time.sleep(0.5)
 # 쉬핑타입 클릭
 browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div[1]/div/div[3]/div/div/button/div').click()
@@ -522,7 +528,7 @@ browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div/div/div[2]/div/div
 time.sleep(0.5)
 # Deselect All 클릭
 # 구리2 클릭
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div/div/div[2]/div/div[1]/div/div/ul/li[67]/a').click()
+browser.find_element(By.LINK_TEXT, '구리2-GUR_2').click()
 time.sleep(0.5)
 browser.find_element(By.XPATH, '//*[@id="searchForm"]/div/div/div/div[3]/div[2]/div/button').click()
 time.sleep(0.5)
