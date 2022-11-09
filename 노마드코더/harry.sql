@@ -4,4 +4,4 @@ SELECT topic.id AS topic_id,title,description,created,name,profile   FROM topic 
 -- topic.id AT topic_id  토픽테이블에 idFMF Topic_id로 변경해서 인식한다
 
 modeling 검색해보기 테이블 만들때
-데이터 백업하기 
+데이터 백업하기 .
