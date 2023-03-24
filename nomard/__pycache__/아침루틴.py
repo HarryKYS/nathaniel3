@@ -13,16 +13,16 @@ browser.maximize_window()
 browser.get("https://mos.coupang.com/login")
 time.sleep(1)
 
-options.add_argument('--kiosk')
-options.add_argument('--start-fullscreen')
-time.sleep(1)
+# options.add_argument('--kiosk')
+# options.add_argument('--start-fullscreen')
+# time.sleep(1)
 browser.find_element(By.XPATH, '//*[@id="okta-second-btn-span"]').click()
 
 time.sleep(1)
 pyautogui.write("nathaniel3")
 pyautogui.press("enter")
 time.sleep(2)
-pyautogui.write("dufrhd3304!@")
+pyautogui.write("dufrhd33!@!@")
 pyautogui.press("enter")
 time.sleep(2)
 # KPIs 클릭 
@@ -192,7 +192,7 @@ time.sleep(1)
 browser.execute_script('window.open("https://mos.coupang.com");')
 time.sleep(2)
 browser.switch_to.window(browser.window_handles[2])
-browser.find_element(By.XPATH, '//*[@id="m_ver_menu"]/ul/li[9]/a/span[2]').click()
+browser.find_element(By.LINK_TEXT, 'KPIs_Logistics').click()
 time.sleep(1)
     # browser.switch_to.frame('iframeResult')
 # Delivery Status 클릭
@@ -229,6 +229,11 @@ time.sleep(0.5)
 # 구리2 클릭
 browser.find_element(By.LINK_TEXT, '구리2 (GUR_2)').click()
 time.sleep(0.5)
+browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div[1]/button').click()
+time.sleep(0.5)
+browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div/div/div[1]/div/button[1]').click()
+
+time.sleep(0.5)
 # 서치바 클릭
 browser.find_element(By.XPATH, '//*[@id="search"]').click()
 time.sleep(1)
@@ -248,7 +253,7 @@ time.sleep(2)
 browser.switch_to.window(browser.window_handles[3])
 
 # Logistic Aashboard 클릭
-browser.find_element(By.XPATH, '//*[@id="m_ver_menu"]/ul/li[8]/a/span[2]').click()
+browser.find_element(By.LINK_TEXT, 'Logistics Dashboard').click()
 time.sleep(0.5)
     # browser.switch_to.frame('iframeResult')
 # Order/Shipped Status 클릭
@@ -341,7 +346,7 @@ browser.switch_to.window(browser.window_handles[4])
 time.sleep(1.5)
 
 
-browser.find_element(By.XPATH, '//*[@id="m_ver_menu"]/ul/li[9]/a/span[2]').click()
+browser.find_element(By.LINK_TEXT, 'KPIs_Logistics').click()
 time.sleep(0.7)
     # browser.switch_to.frame('iframeResult')
 # Delivery Status 클릭
@@ -375,57 +380,12 @@ time.sleep(0.7)
 # select All 클릭
 # Wave 2 클릭
 browser.find_element(By.LINK_TEXT, 'Wave2').click()
-# 캠푸 유형 클릭
-
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div/button').click()
-time.sleep(0.7)
-
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div/div/div[1]/div/button[1]').click()
-time.sleep(0.7)
-# 서치바 클릭
-browser.find_element(By.XPATH, '//*[@id="search"]').click()
-time.sleep(1)
-
-browser.execute_script('window.open("https://mos.coupang.com");')
-time.sleep(2)
-browser.switch_to.window(browser.window_handles[5])
-# KPIs_Logistics 클릭
-browser.find_element(By.XPATH, '//*[@id="m_ver_menu"]/ul/li[9]/a/span[2]').click()
-time.sleep(0.7)
-    # browser.switch_to.frame('iframeResult')
-# Delivery Status 클릭
-browser.find_element(By.LINK_TEXT, 'Delivery Status').click()
-time.sleep(0.7)
-    # browser.switch_to.frame('iframeResult')
-# Camp Delivery Summary V2 클릭
-browser.find_element(By.LINK_TEXT, 'Camp Arrival Status').click()
-time.sleep(0.7)
-# 날짜칸 클릭
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[1]/div/input').click()
-time.sleep(0.7)
-# 날자 클릭 이전 날짜 
-ctime = datetime.datetime.now()
-# ftime = datetime.timedelta(days=1)
-# ntime = ctime - ftime
-# # browser.find_element(By.XPATH, "//td[text()='26']").click()
-browser.find_element(By.XPATH, "//td[text()='{}'][not(contains(@class,'old day'))]".format(ctime.strftime("%-d"))).click()
-# browser.find_element(By.XPATH, "/html/body/div[3]/div[1]/table/tbody/[td/@class='today active day']/td[text()='{}']".format(ctime.strftime("%d"))).click()
-
-# browser.find_element(By.XPATH, "//td[@class='today active day']").click()  # today day 
- 
-# browser.find_element(By.XPATH, "//td[@class='today day']").click()
-# time.sleep(0.7)
-# 캠프칸 클릭
-time.sleep(0.7)
-
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[2]/div/div/button').click()
-# browser.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[3]/div[1]/div/form/div[1]/div/div[2]/div[1]/div/button').click()
-time.sleep(0.7)
-# select All 클릭
-# Wave 2 클릭
-
-
+browser.find_element(By.LINK_TEXT, 'Wave3').click()
+browser.find_element(By.LINK_TEXT, 'Wave4').click()
+browser.find_element(By.LINK_TEXT, 'Normal').click()
 browser.find_element(By.LINK_TEXT, 'Sameday').click()
+browser.find_element(By.LINK_TEXT, 'Fresh Late').click()
+browser.find_element(By.LINK_TEXT, 'Fresh Sameday').click()
 # 캠푸 유형 클릭
 
 browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div/button').click()
@@ -437,65 +397,116 @@ time.sleep(0.7)
 browser.find_element(By.XPATH, '//*[@id="search"]').click()
 time.sleep(1)
 
-browser.execute_script('window.open("https://mos.coupang.com");')
-time.sleep(2)
-browser.switch_to.window(browser.window_handles[6])
-# KPIs_Logistics 클릭
-browser.find_element(By.XPATH, '//*[@id="m_ver_menu"]/ul/li[9]/a/span[2]').click()
-time.sleep(0.7)
-    # browser.switch_to.frame('iframeResult')
-# Delivery Status 클릭
-browser.find_element(By.LINK_TEXT, 'Delivery Status').click()
-time.sleep(0.7)
-    # browser.switch_to.frame('iframeResult')
-# Camp Delivery Summary V2 클릭
-browser.find_element(By.LINK_TEXT, 'Camp Arrival Status').click()
-time.sleep(0.7)
-# 날짜칸 클릭
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[1]/div/input').click()
-time.sleep(0.7)
-# 날자 클릭 이전 날짜 
-ctime = datetime.datetime.now()
-# ftime = datetime.timedelta(days=1)
-# ntime = ctime - ftime
-# # browser.find_element(By.XPATH, "//td[text()='26']").click()
-browser.find_element(By.XPATH, "//td[text()='{}'][not(contains(@class,'old day'))]".format(ctime.strftime("%-d"))).click()
-# browser.find_element(By.XPATH, "/html/body/div[3]/div[1]/table/tbody/[td/@class='today active day']/td[text()='{}']".format(ctime.strftime("%d"))).click()
+# browser.execute_script('window.open("https://mos.coupang.com");')
+# time.sleep(2)
+# browser.switch_to.window(browser.window_handles[5])
+# # KPIs_Logistics 클릭
+# browser.find_element(By.LINK_TEXT, 'KPIs_Logistics').click()
+# time.sleep(0.7)
+#     # browser.switch_to.frame('iframeResult')
+# # Delivery Status 클릭
+# browser.find_element(By.LINK_TEXT, 'Delivery Status').click()
+# time.sleep(0.7)
+#     # browser.switch_to.frame('iframeResult')
+# # Camp Delivery Summary V2 클릭
+# browser.find_element(By.LINK_TEXT, 'Camp Arrival Status').click()
+# time.sleep(0.7)
+# # 날짜칸 클릭
+# browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[1]/div/input').click()
+# time.sleep(0.7)
+# # 날자 클릭 이전 날짜 
+# ctime = datetime.datetime.now()
+# # ftime = datetime.timedelta(days=1)
+# # ntime = ctime - ftime
+# # # browser.find_element(By.XPATH, "//td[text()='26']").click()
+# browser.find_element(By.XPATH, "//td[text()='{}'][not(contains(@class,'old day'))]".format(ctime.strftime("%-d"))).click()
+# # browser.find_element(By.XPATH, "/html/body/div[3]/div[1]/table/tbody/[td/@class='today active day']/td[text()='{}']".format(ctime.strftime("%d"))).click()
 
 # browser.find_element(By.XPATH, "//td[@class='today active day']").click()  # today day 
  
 # browser.find_element(By.XPATH, "//td[@class='today day']").click()
 # time.sleep(0.7)
-# 캠프칸 클릭
-time.sleep(0.7)
+# # 캠프칸 클릭
+# time.sleep(0.7)
 
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[2]/div/div/button').click()
-# browser.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[3]/div[1]/div/form/div[1]/div/div[2]/div[1]/div/button').click()
-time.sleep(0.7)
-# select All 클릭
-# Wave 2 클릭
+# browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[2]/div/div/button').click()
+# # browser.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[3]/div[1]/div/form/div[1]/div/div[2]/div[1]/div/button').click()
+# time.sleep(0.7)
+# # select All 클릭
+# # Wave 2 클릭
 
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/button[1]').click()
-time.sleep(0.9)
 
-# 캠푸 유형 클릭
+# browser.find_element(By.LINK_TEXT, 'Sameday').click()
+# # 캠푸 유형 클릭
 
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div/button').click()
-time.sleep(0.7)
+# browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div/button').click()
+# time.sleep(0.7)
 
-browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div/div/div[1]/div/button[1]').click()
-time.sleep(0.7)
-# 서치바 클릭
-browser.find_element(By.XPATH, '//*[@id="search"]').click()
-time.sleep(1)
+# browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div/div/div[1]/div/button[1]').click()
+# time.sleep(0.7)
+# # 서치바 클릭
+# browser.find_element(By.XPATH, '//*[@id="search"]').click()
+# time.sleep(1)
+
+# browser.execute_script('window.open("https://mos.coupang.com");')
+# time.sleep(2)
+# browser.switch_to.window(browser.window_handles[6])
+# # KPIs_Logistics 클릭
+# browser.find_element(By.LINK_TEXT, 'KPIs_Logistics').click()
+# time.sleep(0.7)
+#     # browser.switch_to.frame('iframeResult')
+# # Delivery Status 클릭
+# browser.find_element(By.LINK_TEXT, 'Delivery Status').click()
+# time.sleep(0.7)
+#     # browser.switch_to.frame('iframeResult')
+# # Camp Delivery Summary V2 클릭
+# browser.find_element(By.LINK_TEXT, 'Camp Arrival Status').click()
+# time.sleep(0.7)
+# # 날짜칸 클릭
+# browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[1]/div/input').click()
+# time.sleep(0.7)
+# # 날자 클릭 이전 날짜 
+# ctime = datetime.datetime.now()
+# # ftime = datetime.timedelta(days=1)
+# # ntime = ctime - ftime
+# # # browser.find_element(By.XPATH, "//td[text()='26']").click()
+# browser.find_element(By.XPATH, "//td[text()='{}'][not(contains(@class,'old day'))]".format(ctime.strftime("%-d"))).click()
+# # browser.find_element(By.XPATH, "/html/body/div[3]/div[1]/table/tbody/[td/@class='today active day']/td[text()='{}']".format(ctime.strftime("%d"))).click()
+
+# browser.find_element(By.XPATH, "//td[@class='today active day']").click()  # today day 
+ 
+# # browser.find_element(By.XPATH, "//td[@class='today day']").click()
+# # time.sleep(0.7)
+# # 캠프칸 클릭
+# time.sleep(0.7)
+
+# browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[2]/div/div/button').click()
+# # browser.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[3]/div[1]/div/form/div[1]/div/div[2]/div[1]/div/button').click()
+# time.sleep(0.7)
+# # select All 클릭
+# # Wave 2 클릭
+
+# browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/button[1]').click()
+# time.sleep(0.9)
+
+# # 캠푸 유형 클릭
+
+# browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div/button').click()
+# time.sleep(0.7)
+
+# browser.find_element(By.XPATH, '//*[@id="searchForm"]/div[1]/div/div[3]/div/div/div/div[1]/div/button[1]').click()
+# time.sleep(0.7)
+# # 서치바 클릭
+# browser.find_element(By.XPATH, '//*[@id="search"]').click()
+# time.sleep(1)
 
 # 노멀 다운 받아 붙이기 
 browser.execute_script('window.open("https://mos.coupang.com");')
 time.sleep(2)
-browser.switch_to.window(browser.window_handles[7])
+browser.switch_to.window(browser.window_handles[5])
 
 # Logistics Dashboard  클릭
-browser.find_element(By.XPATH, '//*[@id="m_ver_menu"]/ul/li[8]/a/span[2]').click()
+browser.find_element(By.LINK_TEXT, 'Logistics Dashboard').click()
 time.sleep(0.5)
     # browser.switch_to.frame('iframeResult')
 # Delivery List by PDD 클릭
