@@ -1,0 +1,68 @@
+WITH accum AS (
+    SELECT
+        aa.customeraddressid,
+        MAX(aa.cnt) AS last_wad
+    FROM (
+        SELECT
+            a.*,
+            SUM(a.rnum) OVER (PARTITION BY a.customeraddressid ORDER BY DATE(a.received_datetime) ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS cnt
+        FROM (
+            SELECT
+                w.*,
+                ROW_NUMBER() OVER (PARTITION BY customeraddressid, workdate, loginid ORDER BY received_datetime) AS rnum
+            FROM
+                sb_logistics.wad_cs_myc w
+            WHERE
+                DATE(w.received_datetime) BETWEEN DATE_ADD('day', -91, DATE('${from_date}')) AND DATE_ADD('day', -1, DATE('${from_date}'))
+        ) a
+        WHERE
+            a.rnum = 1
+    ) aa
+    GROUP BY 1
+)
+
+SELECT
+    c.flag,
+    c.inquiryid,
+    c.code,
+    LEFT(c.received_datetime, 19) AS received_datetime,
+    c.workdate,
+    c.region,
+    c.area,
+    c.camp,
+    c.memberid,
+    c.orderid,
+    c.customeraddressid,
+    c.invoicenumber,
+    c.delivery_completed_at,
+    c.wave,
+    c.workertype,
+    c.flextype,
+    c.subroute,
+    c.loginid,
+    CASE WHEN dci.invoicenumber IS NULL THEN 'N' ELSE 'Y' END AS redelivery_success,
+    CASE WHEN ac.last_wad IS NULL THEN 0 ELSE ac.last_wad END AS last_90d_wad,
+    c.rnum_order AS from_to_wad,
+    (ac.last_wad + c.rnum_order) AS wad_cnt
+FROM (
+    SELECT
+        b.*,
+        CASE WHEN dci.invoicenumber IS NULL THEN 'N' ELSE 'Y' END AS redelivery_success,
+        CASE WHEN ac.last_wad IS NULL THEN 0 ELSE ac.last_wad END AS last_wad,
+        ROW_NUMBER() OVER (PARTITION BY b.customeraddressid ORDER BY b.received_datetime) AS rnum_order
+    FROM (
+        SELECT
+            a.*,
+            ROW_NUMBER() OVER (PARTITION BY customeraddressid, workdate, loginid ORDER BY received_datetime) AS rnum,
+            ROW_NUMBER() OVER (PARTITION BY inquiryid, invoicenumber ORDER BY delivery_completed_at) AS invoice_num
+        FROM
+            sb_logistics.wad_cs_myc w
+        WHERE
+            DATE(w.received_datetime) BETWEEN DATE('${from_date}') AND DATE('${to_date}')
+    ) a
+    WHERE
+        a.rnum = 1
+        AND a.invoice_num = 1 -- Deduplicate된 것 가져오기
+) b
+LEFT JOIN accum ac ON (ac.customeraddressid = b.customeraddressid)
+LEFT JOIN ods.driver_contact_invoices dci ON (dci.invoicenumber = b.invoicenumber AND dci.drivercontactinvoicestatus = 'RDSOLVED');
